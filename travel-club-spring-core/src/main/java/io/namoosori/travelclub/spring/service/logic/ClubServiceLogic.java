@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+@Service("clubservice")
 public class ClubServiceLogic implements ClubService {
 
     //field 선언
