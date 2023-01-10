@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@Repository("clubstore")
+@Repository("clubStore")
 public class ClubMapStore implements ClubStore {
 //    TravelClub을 Map(linkedHashMap)에 저장
     private Map<String, TravelClub> clubMap;

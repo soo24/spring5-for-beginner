@@ -1,5 +1,6 @@
 package io.namoosori.travelclub.spring.service.logic;
 
+import io.namoosori.travelclub.spring.TravelClubApp;
 import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service("clubservice")
+@Service("clubService")
 public class ClubServiceLogic implements ClubService {
 
     //field 선언
@@ -32,8 +33,9 @@ public class ClubServiceLogic implements ClubService {
 
     @Override
     public String registerClub(TravelClubCdo club) {
-//        clubStore.create();
-        return null;
+        TravelClub newClub = new TravelClub(club.getName(), club.getIntro());
+        newClub.checkValidation(); // TravelClub 클래스에 나와있듯, 클럽이름이 3글자 미만 Or 클럽의 소개가 10글자 미만이면 클럽생성 X해주는 메소드
+        return clubStore.create(newClub);
     }
 
     @Override

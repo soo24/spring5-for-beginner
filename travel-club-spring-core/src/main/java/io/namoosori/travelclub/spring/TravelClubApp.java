@@ -1,5 +1,8 @@
 package io.namoosori.travelclub.spring;
 
+import io.namoosori.travelclub.spring.service.ClubService;
+import io.namoosori.travelclub.spring.service.logic.ClubServiceLogic;
+import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,5 +20,13 @@ public class TravelClubApp {
 
         String[] beanNames = context.getBeanDefinitionNames();
         System.out.println(Arrays.toString(beanNames));
+
+        TravelClubCdo clubCdo = new TravelClubCdo("TravelCLub", "Test TravelCLub");
+        ClubService clubService = context.getBean("clubService", ClubService.class);
+
+        String clubId = clubService.registerClub(clubCdo);
+        System.out.println("ID: "+ clubId);
+
+        System.out.println();
     }
 }
