@@ -23,6 +23,8 @@ public class TravelClubApp {
         String[] beanNames = context.getBeanDefinitionNames();
         System.out.println(Arrays.toString(beanNames));
 
+        /* ----Club---- */
+        /*
         TravelClubCdo clubCdo = new TravelClubCdo("TravelCLub 이름", "Test TravelCLub");
         ClubService clubService = context.getBean("clubService", ClubService.class);
 
@@ -33,6 +35,6 @@ public class TravelClubApp {
         System.out.println("클럽 이름: "+ foundedClub.getName());
         System.out.println("클럽 intro: "+ foundedClub.getIntro());
         System.out.println("클럽 foundationtime: "+ new Date(foundedClub.getFoundationTime()) );
-
+        */
     }
 }

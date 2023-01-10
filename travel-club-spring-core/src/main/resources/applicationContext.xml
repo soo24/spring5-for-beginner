@@ -10,6 +10,7 @@
  
     <context:component-scan base-package="io.namoosori.travelclub.spring"/>
     <!-- 하나하나 자기가 bean으로 등록 X, base-package가 되는 특정 패키지부터 하위로 내려가면서 bean를 찾아라!   -->
+    <!-- 그래서 Club 만들고 Member을 Bean만들때마다 id부여하고 어떤 class인지 지정해야하겠지만 우리는 component-scan했기에 그냥 어노테이션으로 사용가능  -->
 
 
 
