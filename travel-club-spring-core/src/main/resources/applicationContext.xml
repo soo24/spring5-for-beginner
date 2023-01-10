@@ -5,14 +5,26 @@
         http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="clubStore" class="io.namoosori.travelclub.spring.store.mapstore.ClubMapStore"/>
+    <!-- 모든 class들을 하나하나 bean 태그로 만들기에는 어려움이 있기에
+         Spring에서 <context:component-scan>를 제공해준다 -->
+ 
+    <context:component-scan base-package="io.namoosori.travelclub.spring"/>
+    <!-- 하나하나 자기가 bean으로 등록 X, base-package가 되는 특정 패키지부터 하위로 내려가면서 bean를 찾아라!   -->
 
-<!-- clubStore를 clubServiceLogic이 알게 하고 사용하게끔 해주고파       -->
-    <bean id="clubService" class="io.namoosori.travelclub.spring.service.logic.ClubServiceLogic">
-        <constructor-arg ref="clubStore"/>
-        <!-- clubService가 사용되는 시점에,
-         생성자를 호출하면서 레퍼런스하고 있는 ClubStore라는 id를 갖는 class ClubMapStore를 주입해주세요 라는 의미-->
-    </bean>
+
+
+
+
+<!--    <bean id="clubStore" class="io.namoosori.travelclub.spring.store.mapstore.ClubMapStore"/>-->
+
+<!--&lt;!&ndash; clubStore를 clubServiceLogic이 알게 하고 사용하게끔 해주고파       &ndash;&gt;-->
+<!--    <bean id="clubService" class="io.namoosori.travelclub.spring.service.logic.ClubServiceLogic">-->
+<!--        <constructor-arg ref="clubStore"/>-->
+<!--        &lt;!&ndash; clubService가 사용되는 시점에,-->
+<!--         생성자를 호출하면서 레퍼런스하고 있는 ClubStore라는 id를 갖는 class ClubMapStore를 주입해주세요 라는 의미&ndash;&gt;-->
+<!--    </bean>-->
+
+
 </beans>
 
 
