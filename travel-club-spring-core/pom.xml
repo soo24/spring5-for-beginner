@@ -15,14 +15,14 @@
 
     <dependencies>
 
-        <!-- spring -->
+        <!-- spring : Ioc,DI를 사용하기 위한 -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.3.0</version>
         </dependency>
 
-        <!-- lombok -->
+        <!-- lombok :set,get메소드나 생성자라든지 클래스를 만들때 @형태로 정의하며 알아서 그 코드들을 생성-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

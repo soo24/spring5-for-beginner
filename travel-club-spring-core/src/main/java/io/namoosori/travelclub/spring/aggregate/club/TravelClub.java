@@ -9,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor //lombok을 이용해 파라미터가 아무것도 없이 아무것도 안하는 생성자인 NoArgs생성자를 만들수 있도록
 public class TravelClub extends Entity {
 	//
 	private static final int MINIMUM_NAME_LENGTH =  3;
