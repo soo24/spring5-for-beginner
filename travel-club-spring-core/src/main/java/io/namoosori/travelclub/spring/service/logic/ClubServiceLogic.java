@@ -5,8 +5,8 @@ import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
-import io.namoosori.travelclub.spring.store.mapstore.ClubMapStore;
 import io.namoosori.travelclub.spring.store.ClubStore;
+import io.namoosori.travelclub.spring.util.exception.NoSuchClubException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,21 +40,31 @@ public class ClubServiceLogic implements ClubService {
 
     @Override
     public TravelClub findClubById(String id) {
-        return null;
+        return clubStore.retrieve(id); // map에 등록된 해당 id의 객체를 찾아서 등록
     }
 
     @Override
     public List<TravelClub> findClubsByName(String name) {
-        return null;
+        return clubStore.retrieveByName(name);
     }
 
     @Override
+    // NameValueList : 어떤 값들이 바뀌어야되는지에 대한 값이 들어있는 list
     public void modify(String clubId, NameValueList nameValues) {
-
+        // -> 해당 clubID의 클럽을 찾고 -> NameValueList 값을 가지고 해당 데이터의 값을 변경해줌
+        TravelClub foundedClub = clubStore.retrieve(clubId); //클럽 찾기
+        if(foundedClub == null){
+            throw new NoSuchClubException("No such club with id : " + clubId);
+        }
+        foundedClub.modifyValues(nameValues);
+        clubStore.update(foundedClub); // 값이 변경된 club을 보내서 Map에 있는 데이터도 변경될 수 있게끔
     }
 
     @Override
     public void remove(String clubId) {
-
+        if(!clubStore.exists(clubId)){
+            throw new NoSuchClubException("No such club with id : " + clubId);
+        }
+        clubStore.delete(clubId);
     }
 }

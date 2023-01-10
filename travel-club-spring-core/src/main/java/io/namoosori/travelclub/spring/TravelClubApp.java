@@ -1,5 +1,6 @@
 package io.namoosori.travelclub.spring;
 
+import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
 import io.namoosori.travelclub.spring.service.logic.ClubServiceLogic;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
@@ -8,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.Date;
 
 public class TravelClubApp {
 
@@ -21,12 +23,16 @@ public class TravelClubApp {
         String[] beanNames = context.getBeanDefinitionNames();
         System.out.println(Arrays.toString(beanNames));
 
-        TravelClubCdo clubCdo = new TravelClubCdo("TravelCLub", "Test TravelCLub");
+        TravelClubCdo clubCdo = new TravelClubCdo("TravelCLub 이름", "Test TravelCLub");
         ClubService clubService = context.getBean("clubService", ClubService.class);
 
         String clubId = clubService.registerClub(clubCdo);
         System.out.println("ID: "+ clubId);
 
-        System.out.println();
+        TravelClub foundedClub = clubService.findClubById(clubId);
+        System.out.println("클럽 이름: "+ foundedClub.getName());
+        System.out.println("클럽 intro: "+ foundedClub.getIntro());
+        System.out.println("클럽 foundationtime: "+ new Date(foundedClub.getFoundationTime()) );
+
     }
 }
