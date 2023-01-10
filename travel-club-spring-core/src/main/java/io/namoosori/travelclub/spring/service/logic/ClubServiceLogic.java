@@ -4,7 +4,7 @@ import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 import io.namoosori.travelclub.spring.service.ClubService;
 import io.namoosori.travelclub.spring.service.sdo.TravelClubCdo;
 import io.namoosori.travelclub.spring.shared.NameValueList;
-import io.namoosori.travelclub.spring.store.ClubMapStore;
+import io.namoosori.travelclub.spring.store.mapstore.ClubMapStore;
 import io.namoosori.travelclub.spring.store.ClubStore;
 
 import java.util.List;
@@ -14,15 +14,23 @@ public class ClubServiceLogic implements ClubService {
     //field 선언
     private ClubStore clubStore;
     // 생성자 만듦
+    /*
+    기존의 생성자 생성
     public  ClubServiceLogic(){
         this.clubStore = new ClubMapStore(); //실제로 알아야하는것 => ClubMapStore
         // clubStore = ClubMapStore의 instance인스턴스
+    }
+    */
+
+    /* 빈객체 이용해서 생성자 생성 */
+    public  ClubServiceLogic(ClubStore clubStore){
+        this.clubStore = clubStore;
     }
 
 
     @Override
     public String registerClub(TravelClubCdo club) {
-        clubStore.create();
+//        clubStore.create();
         return null;
     }
 
