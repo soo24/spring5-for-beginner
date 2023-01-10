@@ -4,7 +4,7 @@ import io.namoosori.travelclub.spring.aggregate.club.TravelClub;
 
 import java.util.List;
 
-public interface ClubStore {
+public interface  ClubStore {
 	//
 	String create(TravelClub club);
 	TravelClub retrieve(String clubId);
